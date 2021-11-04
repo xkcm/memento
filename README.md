@@ -65,7 +65,7 @@ Utility that makes a given function cacheable.
 
 **Return value**
 
-A new function that invokes the original function and caches its return value. This function also contains metadata about the cache instance, which you can acces by `.cacheMetadata`.
+A new function that invokes the original function and caches its return value. This function also contains metadata about the cache instance, which you can access by `.cacheMetadata`.
 
 **Example**
 ```ts
