@@ -254,6 +254,6 @@ interface CacheableConfiguration {
   key?: string;
 }
 ```
-* `keepAlive` *(optional, default = Infinity)* - Time after the cached value expires.
+* `keepAlive` *(optional, default = Infinity)* - Time (in miliseconds) after the cached value expires.
 * `cacheController` *(optional, default = CacheController.default)* - `CacheController` instance.
 * `key` *(optional, default = random UUID)* - Custom cache instance key used to identify the instance.
