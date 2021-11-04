@@ -65,7 +65,7 @@ Utility that makes a given function cacheable.
 
 **Return value**
 
-A new function that invokes the original function and caches its return value. This function also contains metadata about the cache instance, which you can acces by `.cacheMetadata`.
+A new function that invokes the original function and caches its return value. This function also contains metadata about the cache instance, which you can access by `.cacheMetadata`.
 
 **Example**
 ```ts
@@ -254,6 +254,6 @@ interface CacheableConfiguration {
   key?: string;
 }
 ```
-* `keepAlive` *(optional, default = Infinity)* - Time after the cached value expires.
+* `keepAlive` *(optional, default = Infinity)* - Time (in miliseconds) after the cached value expires.
 * `cacheController` *(optional, default = CacheController.default)* - `CacheController` instance.
 * `key` *(optional, default = random UUID)* - Custom cache instance key used to identify the instance.
