@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid/dist'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CacheController } from "./CacheController";
 import { CacheableConfiguration, CachedFunction, CacheInstanceInfo } from "./Types.d";

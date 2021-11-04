@@ -31,7 +31,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.makeCacheable = void 0;
-var dist_1 = require("uuid/dist");
+var uuid_1 = require("uuid");
 var CacheController_1 = require("./CacheController");
 var Storage = __importStar(require("./CacheStorage"));
 function makeCacheable(fn, options) {
@@ -40,7 +40,7 @@ function makeCacheable(fn, options) {
     var cacheController = (options === null || options === void 0 ? void 0 : options.cacheController) || CacheController_1.CacheController.default;
     var isUnlinked = false;
     var cachedAt = null;
-    var cacheIdentifier = (options === null || options === void 0 ? void 0 : options.key) || (0, dist_1.v4)();
+    var cacheIdentifier = (options === null || options === void 0 ? void 0 : options.key) || (0, uuid_1.v4)();
     // register the key, can throw an error
     Storage.registerKey(cacheIdentifier);
     var canBeInvoked = function () { return cachedValue() === null || cachedAt === null || cachedAt + keepAlive <= Date.now(); };

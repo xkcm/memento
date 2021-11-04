@@ -11,7 +11,7 @@
   "scripts": {
     "test": "npx jest",
     "clear-dist": "rm -rf dist/",
-    "build:prod": "yarn clear-dist && npx tsc",
+    "build:prod": "yarn clear-dist && npx tsc --build",
     "build:dev": "yarn clear-dist && npx tsc",
     "build": "yarn build:dev",
     "run:dev": "npx ts-node src/index.ts"
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/eventemitter3": "^2.0.2",
     "@types/jest": "^27.0.2",
+    "@types/uuid": "^8.3.1",
     "jest": "^27.3.1",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.4.0",
