@@ -32,6 +32,12 @@ const cachedGetSeconds = makeCacheable(getSeconds, {
 })
 cacheController01.resetCache()
 ```
+## Installation
+```bash
+yarn add ts-cache-utilities
+# or if you prefer npm
+npm i ts-cache-utilities
+```
 ---
 ## API
 ## `@Cacheable(options)`
