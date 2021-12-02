@@ -1,4 +1,4 @@
-import { CacheControllerOptions, CacheInstanceInfo } from "./Types.d"
+import { CacheControllerOptions, CacheInstanceInfo } from "./Types"
 import { EventEmitter } from 'eventemitter3'
 
 export class CacheController extends EventEmitter {

@@ -6,11 +6,11 @@
     "name": "xkcm",
     "email": "xkcm16+npm@gmail.com"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "test": "npx jest",
-    "clear-dist": "rm -rf dist/",
+    "clear-dist": "rm -rf lib/",
     "build:prod": "yarn clear-dist && npx tsc --build",
     "build:dev": "yarn clear-dist && npx tsc",
     "build": "yarn build:dev",

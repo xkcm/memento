@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 
 import { CacheController } from "./CacheController";
-import { CacheableConfiguration, CachedFunction, CacheInstanceInfo } from "./Types.d";
+import { CacheableConfiguration, CachedFunction, CacheInstanceInfo } from "./Types";
 import * as Storage from './CacheStorage'
 
 function makeCacheable<T extends (...args) => any>(fn: T, options?: CacheableConfiguration):  CachedFunction<T> {

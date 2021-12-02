@@ -3,6 +3,7 @@ import { CacheController } from './utilities/CacheController'
 import { makeCacheable } from './utilities/MakeCacheable'
 import { isKeyAvailable, modifyItem, getItem, registeredKeys } from './utilities/CacheStorage'
 
+
 const Storage = {
   isKeyAvailable,
   registeredKeys,
@@ -10,5 +11,5 @@ const Storage = {
   getItem
 }
 
-export { Cacheable, CacheController, makeCacheable }
-export { Storage }
+const MainModule = { Cacheable, CacheController, makeCacheable, Storage }
+export = MainModule

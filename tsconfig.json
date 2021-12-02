@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "lib": ["es2015"],
-    "target": "ES5",
+    "lib": ["es2015", "ES6", "ES5", "ESNext"],
+    "target": "ES3",
     "allowJs": true,
     "experimentalDecorators": true,
-    "declaration": true,
-    "outDir": "dist/",
     "downlevelIteration": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "declaration": true,
+    "rootDir": "./src/",
+    "outDir": "./lib/"
   },
   "include": [
     "src",

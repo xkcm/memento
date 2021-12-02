@@ -1,5 +1,5 @@
 import { makeCacheable } from './MakeCacheable'
-import { CacheableConfiguration, CachedFunction } from './Types.d'
+import { CacheableConfiguration, CachedFunction } from './Types'
 
 /**
  * Cacheable decorator for methods
