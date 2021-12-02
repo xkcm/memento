@@ -1,6 +1,6 @@
 {
   "name": "ts-cache-utils",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "author": {
     "name": "xkcm",
@@ -32,6 +32,16 @@
     "uuid": "^8.3.2"
   },
   "files": [
-    "./lib/**/*"
+    "./lib/**/*",
+    "./lib/*"
+  ],
+  "keywords": [
+    "typescript",
+    "ts",
+    "cache",
+    "javascript",
+    "js",
+    "caching",
+    "utils"
   ]
 }
