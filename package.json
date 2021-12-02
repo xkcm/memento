@@ -1,6 +1,6 @@
 {
   "name": "ts-cache-utils",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MIT",
   "author": {
     "name": "xkcm",
@@ -9,13 +9,17 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "description": "TypeScript library providing useful caching utilities",
+  "files": [
+    "./lib/**"
+  ],
   "scripts": {
     "test": "npx jest",
     "clear-dist": "rm -rf lib/",
     "build:prod": "yarn clear-dist && npx tsc --build",
     "build:dev": "yarn clear-dist && npx tsc",
     "build": "yarn build:dev",
-    "run:dev": "npx ts-node src/index.ts"
+    "run:dev": "npx ts-node src/index.ts",
+    "prepublish": "yarn build:prod"
   },
   "devDependencies": {
     "@types/eventemitter3": "^2.0.2",
@@ -31,10 +35,6 @@
     "eventemitter3": "^4.0.7",
     "uuid": "^8.3.2"
   },
-  "files": [
-    "./lib/**/*",
-    "./lib/*"
-  ],
   "keywords": [
     "typescript",
     "ts",
