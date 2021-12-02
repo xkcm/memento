@@ -1,5 +1,5 @@
 {
-  "name": "ts-cache-utilities",
+  "name": "ts-cache-utils",
   "version": "1.0.2",
   "license": "MIT",
   "author": {
@@ -8,6 +8,7 @@
   },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "description": "TypeScript library providing useful caching utilities",
   "scripts": {
     "test": "npx jest",
     "clear-dist": "rm -rf lib/",
@@ -29,5 +30,8 @@
   "dependencies": {
     "eventemitter3": "^4.0.7",
     "uuid": "^8.3.2"
-  }
+  },
+  "files": [
+    "./lib/index.js"
+  ]
 }
