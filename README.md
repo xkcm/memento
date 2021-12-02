@@ -34,9 +34,9 @@ cacheController01.resetCache()
 ```
 ## Installation
 ```bash
-yarn add ts-cache-utilities
+yarn add ts-cache-utils
 # or if you prefer npm
-npm i ts-cache-utilities
+npm i ts-cache-utils
 ```
 ---
 ## API
@@ -53,12 +53,10 @@ TypeScript decorator used on class methods.
 **Example**
 ```ts
 class ExampleClass {
-
   @Cacheable({ keepAlive: 30*1000, cacheController: cacheController01, key: "custom-key" })
   public exampleMethod(){
     return Date.now()
   }
-
 }
 ```
 

@@ -8,7 +8,9 @@
     "esModuleInterop": true,
     "declaration": true,
     "rootDir": "./src/",
-    "outDir": "./lib/"
+    "outDir": "./lib/",
+    "module": "umd",
+    "moduleResolution": "node"
   },
   "include": [
     "src",
