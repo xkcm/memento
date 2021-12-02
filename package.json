@@ -1,6 +1,6 @@
 {
   "name": "ts-cache-utils",
-  "version": "1.0.5",
+  "version": "1.1.2",
   "license": "MIT",
   "author": {
     "name": "xkcm",
@@ -18,8 +18,7 @@
     "build:prod": "yarn clear-dist && npx tsc --build",
     "build:dev": "yarn clear-dist && npx tsc",
     "build": "yarn build:dev",
-    "run:dev": "npx ts-node src/index.ts",
-    "prepublish": "yarn build:prod"
+    "run:dev": "npx ts-node src/index.ts"
   },
   "devDependencies": {
     "@types/eventemitter3": "^2.0.2",
