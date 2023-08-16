@@ -1,6 +1,6 @@
 {
-  "name": "ts-cache-utils",
-  "version": "1.1.4",
+  "name": "@xkcm/memento",
+  "version": "1.0.0",
   "license": "MIT",
   "author": {
     "name": "xkcm",
@@ -8,36 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xkcm/ts-cache.git"
+    "url": "https://github.com/xkcm/memento.git"
   },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "description": "TypeScript library providing useful caching utilities",
+  "description": "TypeScript library for memoization",
   "files": [
-    "./lib/**"
+    "./lib/**/*"
   ],
-  "scripts": {
-    "test": "npx jest",
-    "clear-dist": "rm -rf lib/",
-    "build:prod": "yarn clear-dist && npx tsc --build",
-    "build:dev": "yarn clear-dist && npx tsc",
-    "build": "yarn build:dev",
-    "run:dev": "npx ts-node src/index.ts"
-  },
-  "devDependencies": {
-    "@types/eventemitter3": "^2.0.2",
-    "@types/jest": "^27.0.2",
-    "@types/uuid": "^8.3.1",
-    "jest": "^27.3.1",
-    "ts-jest": "^27.0.7",
-    "ts-node": "^10.4.0",
-    "tsc": "^2.0.3",
-    "typescript": "^4.4.4"
-  },
-  "dependencies": {
-    "eventemitter3": "^4.0.7",
-    "uuid": "^8.3.2"
-  },
   "keywords": [
     "typescript",
     "ts",
@@ -46,5 +24,30 @@
     "js",
     "caching",
     "utils"
-  ]
+  ],
+  "scripts": {
+    "test": "vitest",
+    "build": "rm -rf ./lib && tsc --build -p tsconfig.build.json",
+    "lint": "pnpm exec eslint ./src ./tests --ext .ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "@types/uuid": "^8.3.1",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.1"
+  },
+  "dependencies": {
+    "eventemitter3": "^4.0.7",
+    "uuid": "^8.3.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,51 +1,41 @@
+const StorageObject = new Map<string, any>();
 
-const __StorageObject = new Map<String, any>()
-
-const getItem = <T extends unknown>(key: string): T => {
-  return __StorageObject.get(key)
-}
+const getItem = <T>(key: string): T => StorageObject.get(key);
+const hasItem = (key: string): boolean => StorageObject.has(key);
 const setItem = (key: string, value: any): boolean => {
-  __StorageObject.set(key, value)
-  return hasItem(key)
-}
-const removeItem = (key: string): boolean => {
-  return __StorageObject.delete(key)
-}
-const hasItem = (key: string): boolean => {
-  return __StorageObject.has(key)
-}
-const modifyItem = (key: string, modifier: (<T extends unknown>(val: T) => T)): boolean => {
-  return setItem(
-    key,
-    modifier.call(
-      modifier, getItem(key)
-    )
-  )
-}
-const __RegisteredKeys = new Set<string>()
-const registeredKeys = () => {
-  return [...__RegisteredKeys.values()]
-}
-const isKeyAvailable = (key: string) => {
-  return !__RegisteredKeys.has(key)
-}
+  StorageObject.set(key, value);
+  return hasItem(key);
+};
+const removeItem = (key: string): boolean => StorageObject.delete(key);
+const modifyItem = (key: string, modifier: (<T>(val: T) => T)): boolean => setItem(
+  key,
+  modifier.call(modifier, getItem(key)),
+);
+const RegisteredKeys = new Set<string>();
+const registeredKeys = () => [...RegisteredKeys.values()];
+const isKeyAvailable = (key: string) => !RegisteredKeys.has(key);
 const registerKey = (key: string) => {
-  if (isKeyAvailable(key)) __RegisteredKeys.add(key)
-  else throw new Error("Cache instance with given key is already registered")
-}
-const deleteKey = (key: string, tryDeleteCacheItem = true) => {
-  if (tryDeleteCacheItem){
-    try {
-      removeItem(key)
-    }
-    catch (e) {}
+  if (isKeyAvailable(key)) {
+    RegisteredKeys.add(key);
+  } else {
+    throw new Error("Cache instance with given key is already registered");
   }
-  __RegisteredKeys.delete(key)
-}
+};
+const deleteKey = (key: string, tryDeleteCacheItem = true) => {
+  if (tryDeleteCacheItem) {
+    try {
+      removeItem(key);
+    } catch {
+      // ignore
+    }
+  }
+  RegisteredKeys.delete(key);
+};
 
 export {
-  getItem, setItem, hasItem,
-  removeItem, modifyItem,
-  registeredKeys, isKeyAvailable,
-  registerKey, deleteKey
-}
+  deleteKey,
+  getItem, hasItem,
+  isKeyAvailable,
+  modifyItem,
+  registeredKeys, registerKey, removeItem, setItem,
+};

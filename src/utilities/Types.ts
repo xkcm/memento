@@ -1,4 +1,4 @@
-import { CacheController } from "./CacheController";
+import type { CacheController } from "./CacheController";
 
 export interface CacheableConfiguration {
   keepAlive?: number;
@@ -13,7 +13,7 @@ export type CachedFunction<T extends (...args) => any> = {
     isCacheControllerDefined: () => boolean;
     lastCacheTime: () => number;
   };
-}
+};
 
 export interface CacheControllerOptions {
 

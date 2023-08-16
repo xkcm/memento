@@ -1,15 +1,23 @@
-import { Cacheable } from './utilities/CacheableDecorator'
-import { CacheController } from './utilities/CacheController'
-import { makeCacheable } from './utilities/MakeCacheable'
-import { isKeyAvailable, modifyItem, getItem, registeredKeys } from './utilities/CacheStorage'
-
+import { Cacheable } from "./utilities/CacheableDecorator";
+import { CacheController } from "./utilities/CacheController";
+import {
+  getItem,
+  isKeyAvailable,
+  modifyItem,
+  registeredKeys,
+} from "./utilities/CacheStorage";
+import { makeCacheable } from "./utilities/MakeCacheable";
 
 const Storage = {
   isKeyAvailable,
   registeredKeys,
   modifyItem,
-  getItem
-}
+  getItem,
+};
 
-const MainModule = { Cacheable, CacheController, makeCacheable, Storage }
-export = MainModule
+export {
+  Cacheable,
+  CacheController,
+  makeCacheable,
+  Storage,
+};

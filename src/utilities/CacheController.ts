@@ -1,35 +1,47 @@
-import { CacheControllerOptions, CacheInstanceInfo } from "./Types"
-import { EventEmitter } from 'eventemitter3'
+import { EventEmitter } from "eventemitter3";
+
+import { CacheControllerOptions, CacheInstanceInfo } from "./Types";
 
 export class CacheController extends EventEmitter {
+  // eslint-disable-next-line no-use-before-define
+  public static default: CacheController = null;
 
-  public static default: CacheController = null
-  static createController(options?: CacheControllerOptions){
-    return new CacheController()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  static createController(options?: CacheControllerOptions) {
+    return new CacheController();
   }
-  static setDefault(cacheController: CacheController){
-    CacheController.default = cacheController
-  }
-  private __controlledKeys = new Map<string, CacheInstanceInfo>()
 
-  public resetCache(...keys: string[]){
-    if (keys.length > 0) this.emit("cacheReset", { scope: keys })
-    this.emit("cacheReset", { scope: "all" })
+  static setDefault(cacheController: CacheController) {
+    CacheController.default = cacheController;
   }
-  public controlledCache(){
-    return [...this.__controlledKeys.keys()]
+
+  private controlledKeys = new Map<string, CacheInstanceInfo>();
+
+  public resetCache(...keys: string[]) {
+    if (keys.length > 0) {
+      this.emit("cacheReset", { scope: keys });
+    }
+    this.emit("cacheReset", { scope: "all" });
   }
-  public registerSelf(key: string, opts: CacheInstanceInfo){
-    if (this.__controlledKeys.has(key)) return
-    this.__controlledKeys.set(key, opts)
-    return true
+
+  public controlledCache() {
+    return [...this.controlledKeys.keys()];
   }
-  public getInfo(key: string){
-    return this.__controlledKeys.get(key)
+
+  public registerSelf(key: string, opts: CacheInstanceInfo) {
+    if (this.controlledKeys.has(key)) {
+      return;
+    }
+
+    this.controlledKeys.set(key, opts);
   }
-  public unlinkKey(key: string){
-    this.emit("unlinkCacheKey", { key })
-    return this.__controlledKeys.delete(key)
+
+  public getInfo(key: string) {
+    return this.controlledKeys.get(key);
+  }
+
+  public unlinkKey(key: string) {
+    this.emit("unlinkCacheKey", { key });
+    return this.controlledKeys.delete(key);
   }
 }
-
