@@ -1,23 +1,5 @@
-import { Cacheable } from "./utilities/CacheableDecorator";
-import { CacheController } from "./utilities/CacheController";
-import {
-  getItem,
-  isKeyAvailable,
-  modifyItem,
-  registeredKeys,
-} from "./utilities/CacheStorage";
-import { makeCacheable } from "./utilities/MakeCacheable";
+export { Storage } from "./types";
 
-const Storage = {
-  isKeyAvailable,
-  registeredKeys,
-  modifyItem,
-  getItem,
-};
-
-export {
-  Cacheable,
-  CacheController,
-  makeCacheable,
-  Storage,
-};
+export { default as Memento } from "./classes/Memento/Memento";
+export { default as MementoController } from "./classes/MementoController/MementoController";
+export * from "./utils";

@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "lib": [
+      "ESNext"
+    ],
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "ES6",
     "moduleResolution": "node",
     "allowJs": true,
     "experimentalDecorators": true,
@@ -10,7 +12,7 @@
     "downlevelIteration": true,
     "esModuleInterop": true,
     "declaration": true,
-    "outDir": "./lib"
+    "strict": true
   },
   "include": [
     "./src/**/*.ts"

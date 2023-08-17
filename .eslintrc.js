@@ -34,4 +34,4 @@ module.exports = {
     "class-methods-use-this": "off"
   },
   ignorePatterns: [".eslintrc.js", "jest.config.js"]
-}
+};

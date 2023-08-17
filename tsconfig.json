@@ -1,8 +1,5 @@
 {
-  "compilerOptions": {
-    "preserveSymlinks": true
-  },
-  "extends": "./tsconfig.build.json",
+  "extends": "./tsconfig.base.json",
   "include": [
     "src/**/*",
     "tests/**/*",
