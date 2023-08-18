@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ESNext"
+    ],
+    "target": "ESNext",
+    "module": "ES6",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "strict": true
+  },
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "./lib/**/*",
+    "./jest.config.js"
+  ]
+}

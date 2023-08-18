@@ -1,22 +1,7 @@
 {
-  "compilerOptions": {
-    "lib": ["es2015", "ES6", "ES5", "ESNext"],
-    "target": "ES3",
-    "allowJs": true,
-    "experimentalDecorators": true,
-    "downlevelIteration": true,
-    "esModuleInterop": true,
-    "declaration": true,
-    "rootDir": "./src/",
-    "outDir": "./lib/",
-    "module": "umd",
-    "moduleResolution": "node"
-  },
+  "extends": "./tsconfig.base.json",
   "include": [
-    "src",
-    "test"
-  ],
-  "exclude": [
-    "dist/**/*"
+    "src/**/*",
+    "tests/**/*",
   ]
 }
