@@ -206,6 +206,12 @@ class MementoController {
 }
 ```
 
+### Storages
+#### MemoryStorage
+In-memory synchronous storage. Used by default by Memento class.
+#### RedisStorage
+Redis asynchronous storage, takes Redis client as a constructor argument.
+
 ### Utils
 #### extractMemoizationMetadata
 Typed utility function for extracting memoization metadata from a memoized function.
