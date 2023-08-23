@@ -38,6 +38,24 @@ describe("Memoizing async functions", () => {
 
     expect(fn).toHaveBeenCalledOnce();
     expect(value1).toEqual(value2);
-    expect(Object.keys(storage.cacheObject)).toHaveLength(1);
+    expect(Object.keys(storage.memoizationObject)).toHaveLength(1);
+  });
+
+  it("should memoize async function with async storage", async () => {
+    const fn = vi.fn(async () => Math.random());
+
+    const storage = new TestAsyncStorage();
+    const memento = new Memento({
+      ttl: 60_000,
+      storage,
+    });
+    const memoizedFn = memento.memoize(fn);
+
+    const value1 = await memoizedFn();
+    const value2 = await memoizedFn();
+
+    expect(fn).toHaveBeenCalledOnce();
+    expect(value1).toEqual(value2);
+    expect(Object.keys(storage.memoizationObject)).toHaveLength(1);
   });
 });

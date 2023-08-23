@@ -12,8 +12,7 @@ export const memoize = <F extends AnyFunction, S extends Storage | AsyncStorage 
   fn: F,
   options: MementoConstructorOptions<S> & {
     functionId?: string;
-  }
-  ,
+  },
 ): MemoizedFunction<F, S> => (
   new Memento(options).memoize(fn, options)
 );

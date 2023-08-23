@@ -13,7 +13,7 @@ import { MemoryStorage } from "../src/storages";
 import { TestAsyncStorage, TestStorage } from "./helpers";
 
 describe("Memento Controller", () => {
-  it("should use Memento Controller and invalidate cache using custom functionId", async () => {
+  it("should use Memento Controller and invalidate using custom functionId", async () => {
     const fn = vi.fn(() => Math.random());
 
     const controller = new MementoController();
@@ -37,7 +37,7 @@ describe("Memento Controller", () => {
     expect(value3).not.toEqual(value1);
   });
 
-  it("should invalidate cache using invalidateAll", async () => {
+  it("should invalidate using invalidateAll", async () => {
     const fn = vi.fn(() => Math.random());
 
     const controller = new MementoController();

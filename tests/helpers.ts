@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { AsyncStorage, CacheEntry, Storage } from "../src/types";
+import { AsyncStorage, MemoizationEntry, Storage } from "../src/types";
 
 export const delay = (ms: number) => new Promise((res) => {
   setTimeout(res, ms);
@@ -8,57 +8,57 @@ export const delay = (ms: number) => new Promise((res) => {
 export class TestAsyncStorage implements AsyncStorage {
   type = "async" as const;
 
-  public cacheObject: Record<string, any> = {};
+  public memoizationObject: Record<string, any> = {};
 
-  async set(functionId: string, argsId: string, cacheEntry: CacheEntry<any>): Promise<void> {
-    if (!this.cacheObject[functionId]) {
-      this.cacheObject[functionId] = {};
+  async set(functionId: string, argsId: string, entry: MemoizationEntry<any>): Promise<void> {
+    if (!this.memoizationObject[functionId]) {
+      this.memoizationObject[functionId] = {};
     }
-    this.cacheObject[functionId][argsId] = cacheEntry;
+    this.memoizationObject[functionId][argsId] = entry;
   }
 
   async get(functionId: string, argsId: string) {
-    return this.cacheObject[functionId]?.[argsId];
+    return this.memoizationObject[functionId]?.[argsId];
   }
 
   async clear(functionId: string, argsId: string) {
-    if (!this.cacheObject[functionId]) {
+    if (!this.memoizationObject[functionId]) {
       return;
     }
     if (!argsId) {
-      delete this.cacheObject[functionId];
+      delete this.memoizationObject[functionId];
       return;
     }
 
-    delete this.cacheObject[functionId][argsId];
+    delete this.memoizationObject[functionId][argsId];
   }
 }
 
 export class TestStorage implements Storage {
   type = "sync" as const;
 
-  public cacheObject: Record<string, any> = {};
+  public memoizationObject: Record<string, any> = {};
 
-  set(functionId: string, argsId: string, cacheEntry: CacheEntry<any>): void {
-    if (!this.cacheObject[functionId]) {
-      this.cacheObject[functionId] = {};
+  set(functionId: string, argsId: string, entry: MemoizationEntry<any>): void {
+    if (!this.memoizationObject[functionId]) {
+      this.memoizationObject[functionId] = {};
     }
-    this.cacheObject[functionId][argsId] = cacheEntry;
+    this.memoizationObject[functionId][argsId] = entry;
   }
 
   get(functionId: string, argsId: string) {
-    return this.cacheObject[functionId]?.[argsId];
+    return this.memoizationObject[functionId]?.[argsId];
   }
 
   clear(functionId: string, argsId: string) {
-    if (!this.cacheObject[functionId]) {
+    if (!this.memoizationObject[functionId]) {
       return;
     }
     if (!argsId) {
-      delete this.cacheObject[functionId];
+      delete this.memoizationObject[functionId];
       return;
     }
 
-    delete this.cacheObject[functionId][argsId];
+    delete this.memoizationObject[functionId][argsId];
   }
 }

@@ -11,7 +11,7 @@ import { delay } from "./helpers";
 import { ConstructorOptionRequiredError, MemoizeOptionRequiredError } from "../src/classes/Memento/Memento.errors";
 
 describe("Main functionality", () => {
-  it("should return cached value", async () => {
+  it("should return memoized value", async () => {
     const fn = vi.fn(() => Date.now());
 
     const memento = new Memento({
@@ -28,7 +28,7 @@ describe("Main functionality", () => {
     expect(value1).toEqual(value2);
   });
 
-  it("should update cached value after it expires", async () => {
+  it("should update memoized value after it expires", async () => {
     const fn = vi.fn(() => Date.now());
     const memento = new Memento({
       ttl: 500,
@@ -47,7 +47,7 @@ describe("Main functionality", () => {
     expect(value3).not.toEqual(value1);
   });
 
-  it("should not use cached value if args are different", async () => {
+  it("should not use memoized value if args are different", async () => {
     const performCalculations = (a: number, b: number) => a + b;
     const fn = vi.fn((a: number, b: number) => performCalculations(a, b));
 

@@ -3,8 +3,8 @@ import { v4 as generateUUID } from "uuid";
 
 import {
   AsyncStorage,
-  CacheEntry,
-  IsCacheEntryValidOptions,
+  MemoizationEntry,
+  IsMemoizationEntryValidOptions,
   Storage,
 } from "./types";
 import { AnyFunction } from "./types.helpers";
@@ -17,11 +17,11 @@ export const defaultBuildArgumentsId = (args: any[]) => {
   return sha256(stringified);
 };
 
-export const defaultIsCacheEntryValid = (
-  cacheEntry: CacheEntry,
-  options: IsCacheEntryValidOptions,
+export const defaultIsMemoizationEntryValid = (
+  entry: MemoizationEntry,
+  options: IsMemoizationEntryValidOptions,
 ) => {
-  const expirationTimestamp = cacheEntry.timestamp + options.ttl;
+  const expirationTimestamp = entry.timestamp + options.ttl;
 
   return (
     Date.now() < expirationTimestamp
