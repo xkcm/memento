@@ -1,2 +1,2 @@
-* [Home](README.md "Home / Memento")
+* [Home](/ "Home / Memento")
 * [Reference](reference.md "Reference / Memento")
