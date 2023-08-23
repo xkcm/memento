@@ -1,6 +1,6 @@
 {
   "name": "@xkcm/memento",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "license": "MIT",
   "author": {
     "name": "xkcm",
@@ -19,20 +19,12 @@
       "import": "./lib/es6/index.js",
       "require": "./lib/cjs/index.js",
       "types": "./lib/es6/index.d.ts"
-    },
-    "./storages/": {
-      "import": "./lib/es6/storages/index.js",
-      "require": "./lib/cjs/storages/index.js",
-      "types": "./lib/es6/storages/index.d.ts"
     }
   },
   "typesVersions": {
     "*": {
       "./": [
         "./lib/es6/index.d.ts"
-      ],
-      "./storages/": [
-        "./lib/es6/storages/index.d.ts"
       ]
     }
   },

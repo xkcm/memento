@@ -9,10 +9,10 @@ export default class MementoController {
   protected storages = new Map<string, Storage | AsyncStorage>();
 
   public async invalidateAll() {
-    return Promise.all([...this.storages.keys()].map(this.invalidate.bind(this)));
+    return Promise.all([...this.storages.keys()].map((fnId) => this.invalidate(fnId)));
   }
 
-  public async invalidate(functionId: string) {
+  public async invalidate(functionId: string, argsId?: string): Promise<void> {
     if (!this.storages.has(functionId)) {
       throw new UnregisteredFunctionError({
         metadata: {
@@ -23,7 +23,7 @@ export default class MementoController {
     }
 
     const functionStorage = this.storages.get(functionId)!;
-    return functionStorage.clear(functionId);
+    return functionStorage.clear(functionId, argsId);
   }
 
   public register(functionId: string, storage: Storage | AsyncStorage) {

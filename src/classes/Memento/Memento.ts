@@ -2,7 +2,7 @@ import {
   assertMemoizeOptions,
   defaultBuildArgumentsId,
   defaultBuildFunctionId,
-  defaultIsCacheEntryValid,
+  defaultIsMemoizationEntryValid,
   isStorageSync,
 } from "../../helpers";
 import {
@@ -38,7 +38,7 @@ export default class Memento<S extends AsyncStorage | Storage> {
       controller,
       buildFunctionId = defaultBuildFunctionId,
       buildArgumentsId = defaultBuildArgumentsId,
-      isCacheEntryValid = defaultIsCacheEntryValid,
+      isMemoizationEntryValid = defaultIsMemoizationEntryValid,
       functionId = buildFunctionId(fn),
     } = resolvedOptions;
 
@@ -50,10 +50,10 @@ export default class Memento<S extends AsyncStorage | Storage> {
     if (isStorageSync(storage)) {
       memoizedFunction = ((...args: Parameters<F>) => {
         const argsId = buildArgumentsId(args);
-        const cacheEntry = storage.get<ReturnType<F>>(functionId, argsId);
+        const entry = storage.get<ReturnType<F>>(functionId, argsId);
 
-        if (cacheEntry && isCacheEntryValid(cacheEntry, { ttl })) {
-          return cacheEntry.value;
+        if (entry && isMemoizationEntryValid(entry, { ttl })) {
+          return entry.value;
         }
 
         const fnValue = fn(...args);
@@ -71,10 +71,10 @@ export default class Memento<S extends AsyncStorage | Storage> {
     } else {
       memoizedFunction = (async (...args: Parameters<F>) => {
         const argsId = buildArgumentsId(args);
-        const cacheEntry = await storage.get<ReturnType<F>>(functionId, argsId);
+        const entry = await storage.get<ReturnType<F>>(functionId, argsId);
 
-        if (cacheEntry && isCacheEntryValid(cacheEntry, { ttl })) {
-          return cacheEntry.value;
+        if (entry && isMemoizationEntryValid(entry, { ttl })) {
+          return entry.value;
         }
 
         const fnValue = fn(...args);

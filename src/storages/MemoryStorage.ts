@@ -1,14 +1,14 @@
-import { CacheEntry, Storage } from "../types";
+import { MemoizationEntry, Storage } from "../types";
 
 export class MemoryStorage implements Storage {
   public type = "sync" as const;
 
   private items = new Map<
     string,
-    Map<string, CacheEntry>
+    Map<string, MemoizationEntry>
   >();
 
-  set(functionId: string, argsId: string, value: CacheEntry): void {
+  set(functionId: string, argsId: string, value: MemoizationEntry): void {
     let argsMap = this.items.get(functionId);
     if (!argsMap) {
       argsMap = new Map();
@@ -19,7 +19,7 @@ export class MemoryStorage implements Storage {
     this.items.set(functionId, argsMap);
   }
 
-  get<T>(functionId: string, argsId: string): CacheEntry<T> | undefined {
+  get<T>(functionId: string, argsId: string): MemoizationEntry<T> | undefined {
     return this.items.get(functionId)?.get(argsId);
   }
 
