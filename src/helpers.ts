@@ -24,7 +24,7 @@ export const defaultIsMemoizationEntryValid = (
   const expirationTimestamp = entry.timestamp + options.ttl;
 
   return (
-    Date.now() < expirationTimestamp
+    (Date.now() < expirationTimestamp || options.ttl != -1)
   );
 };
 
