@@ -1,6 +1,6 @@
 {
   "name": "@xkcm/memento",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "MIT",
   "author": {
     "name": "xkcm",
@@ -15,34 +15,30 @@
     "./lib/**/*"
   ],
   "exports": {
-    ".": {
-      "import": "./lib/es6/index.js",
-      "require": "./lib/cjs/index.js",
-      "types": "./lib/es6/index.d.ts"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "./": [
-        "./lib/es6/index.d.ts"
-      ]
-    }
+    "import": "./lib/es6.js",
+    "require": "./lib/cjs.js",
+    "types": "./lib/index.d.ts"
   },
   "keywords": [
     "typescript",
     "ts",
-    "cache",
     "javascript",
     "js",
     "caching",
-    "utils"
+    "cache",
+    "memoization",
+    "memoize",
+    "memo",
+    "xkcm"
   ],
   "scripts": {
     "test": "vitest",
-    "build": "rm -rf ./lib && tsc -p tsconfig.build.es6.json && tsc -p tsconfig.build.cjs.json",
+    "build": "rm -rf ./lib && pnpm exec rollup -c rollup.config.mjs",
     "lint": "pnpm exec eslint ./src ./tests --ext .ts"
   },
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.2",
     "@types/node": "^20.5.0",
     "@types/sha256": "^0.2.0",
     "@types/uuid": "^8.3.1",
@@ -53,6 +49,10 @@
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "rollup": "^3.28.1",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-dts": "^6.0.0",
+    "tslib": "^2.6.2",
     "typescript": "^5.1.6",
     "vitest": "^0.34.1"
   },
@@ -63,6 +63,7 @@
     "uuid": "^8.3.2"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }

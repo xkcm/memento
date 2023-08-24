@@ -69,6 +69,23 @@ describe("Main functionality", () => {
     expect(value2).toEqual(performCalculations(3, 4));
     expect(value3).toEqual(value2);
   });
+
+  it("should never let entry expire", () => {
+    const fn = vi.fn(() => Date.now());
+    const memento = new Memento({
+      ttl: -1,
+      storage: new MemoryStorage(),
+    });
+    const memoizedFn = memento.memoize(fn);
+
+    const value1 = memoizedFn();
+    const value2 = memoizedFn();
+    const value3 = memoizedFn();
+
+    expect(fn).toHaveBeenCalledTimes(1);
+    expect(value1).toEqual(value2);
+    expect(value3).toEqual(value1);
+  });
 });
 
 /* eslint-disable no-new */

@@ -112,7 +112,7 @@ class Memento {
 ```
 
 Supported constructor options:
-* `ttl` - Time To Live, time after a memoization entry is considered invalid
+* `ttl` - Time To Live, time after a memoization entry is considered invalid, if set to `-1` entry never expires
 * `storage` - Storage interface to store the memoization values
 * `controller` - optional memoization controller
 * `buildFunctionId` - optional custom function for creating function identifiers
