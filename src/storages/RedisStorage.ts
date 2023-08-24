@@ -1,13 +1,13 @@
-import type { RedisClientType } from "@node-redis/client/dist/lib/client";
+import { createClient } from "@node-redis/client";
 import { AsyncStorage, MemoizationEntry } from "../types";
 
 export class RedisStorage implements AsyncStorage {
   public type = "async" as const;
 
-  constructor(protected redisClient: RedisClientType) { }
+  constructor(protected redisClient: ReturnType<typeof createClient>) { }
 
   async set(functionId: string, argsId: string, value: MemoizationEntry) {
-    this.redisClient.hSet(functionId, argsId, JSON.stringify(value));
+    await this.redisClient.hSet(functionId, argsId, JSON.stringify(value));
   }
 
   async get<T>(functionId: string, argsId: string): Promise<MemoizationEntry<T> | undefined> {
