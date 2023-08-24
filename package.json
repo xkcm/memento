@@ -14,7 +14,6 @@
   "files": [
     "./lib/**/*"
   ],
-  "type": "module",
   "exports": {
     "import": "./lib/es6.js",
     "require": "./lib/cjs.js",
@@ -64,6 +63,7 @@
     "uuid": "^8.3.2"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }
