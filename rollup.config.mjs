@@ -16,7 +16,8 @@ const config = [
       },
       {
         file: pkg.exports.require,
-        format: "cjs"
+        format: "cjs",
+        exports: "named",
       }
     ],
     plugins: [
