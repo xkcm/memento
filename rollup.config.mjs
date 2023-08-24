@@ -10,13 +10,14 @@ const config = [
     input: "src/index.ts",
     output: [
       {
-        file: pkg.exports.import,
+        file: pkg.main,
         format: "es",
         exports: "named",
       },
       {
-        file: pkg.exports.require,
-        format: "cjs"
+        file: pkg.module,
+        format: "cjs",
+        exports: "named",
       }
     ],
     plugins: [
@@ -34,7 +35,7 @@ const config = [
   {
     input: "lib/dts/index.d.ts",
     output: {
-      file: pkg.exports.types
+      file: pkg.types
     },
     plugins: [
       dts(),

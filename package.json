@@ -14,6 +14,7 @@
   "files": [
     "./lib/**/*"
   ],
+  "type": "module",
   "exports": {
     "import": "./lib/es6.js",
     "require": "./lib/cjs.js",
@@ -57,7 +58,6 @@
     "vitest": "^0.34.1"
   },
   "dependencies": {
-    "@node-redis/client": "^1.0.6",
     "@xkcm/better-errors": "^2.2.0",
     "sha256": "^0.2.0",
     "uuid": "^8.3.2"

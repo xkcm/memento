@@ -56,3 +56,11 @@ export type MemoizationMetadata<S extends Storage | AsyncStorage> = Readonly<{
   buildArgumentsId: (args: any[]) => string;
   controller?: MementoController;
 }>;
+
+export interface RedisClient {
+  hSet(key: string, field: string, value: string): Promise<any>;
+  hGet(key: string, field: string): Promise<string | undefined>;
+  exists(key: string): Promise<number>;
+  del(key: string): Promise<any>;
+  hDel(key: string, field: string): Promise<any>;
+}
