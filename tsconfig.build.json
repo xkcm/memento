@@ -4,14 +4,14 @@
       "ESNext"
     ],
     "target": "ESNext",
-    "module": "ES6",
+    "module": "ESNext",
     "moduleResolution": "node",
     "allowJs": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
-    "declaration": true,
+    "declaration": false,
     "strict": true
   },
   "include": [
