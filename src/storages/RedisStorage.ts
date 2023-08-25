@@ -5,8 +5,14 @@ export class RedisStorage implements AsyncStorage {
 
   constructor(protected redisClient: RedisClient) { }
 
-  async set(functionId: string, argsId: string, value: MemoizationEntry) {
-    await this.redisClient.hSet(functionId, argsId, JSON.stringify(value));
+  async set(functionId: string, argsId: string, entry: MemoizationEntry) {
+    const resolvedValue = entry.value instanceof Promise ? await entry.value : entry.value;
+    const newEntry = {
+      ...entry,
+      value: resolvedValue,
+    };
+
+    await this.redisClient.hSet(functionId, argsId, JSON.stringify(newEntry));
   }
 
   async get<T>(functionId: string, argsId: string): Promise<MemoizationEntry<T> | undefined> {
@@ -14,6 +20,7 @@ export class RedisStorage implements AsyncStorage {
     if (!stringified) {
       return;
     }
+
     return JSON.parse(stringified) as MemoizationEntry<T>; // eslint-disable-line consistent-return
   }
 
@@ -25,6 +32,7 @@ export class RedisStorage implements AsyncStorage {
       await this.redisClient.del(functionId);
       return;
     }
+
     await this.redisClient.hDel(functionId, argsId);
   }
 }
