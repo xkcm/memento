@@ -17,8 +17,8 @@ export const memoize = <F extends AnyFunction, S extends Storage | AsyncStorage 
   new Memento(options).memoize(fn, options)
 );
 
-export const extractMemoizationMetadata = <F extends MemoizedFunction<any, any>>(
+export const extractMemoizationMetadata = <F extends AnyFunction>(
   memoizedFunction: F,
 ): MemoizationMetadata<F extends MemoizedFunction<any, infer S> ? S : Storage | AsyncStorage> => (
-  Reflect.getMetadata("memoization", memoizedFunction)
+  Reflect.getMetadata("memoization", memoizedFunction) ?? {}
 );
